@@ -37,7 +37,7 @@ def n_tupled(data, n, fillvalue):
 def hide_msg(image, data):
     """"
     ocultar la carga en los bits menos significativos de la imagen
-    devolver la imagen manipulada o None
+    devolver la imagen manipulada o nula
     """
 
     def set_least_sig_bit(cc, bit):
@@ -70,7 +70,7 @@ def hide_msg(image, data):
 def extract_msg(image):
 
     def get_least_sig_bits(image):
-        """get the least significant bits from image"""
+        """obtener los bits menos significativos de la imagen"""
         pxls = image.getdata()
         return (cc & 1 for pxl in pxls for cc in pxl)
 
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     import os
 
     if len(sys.argv) != 3:
-        print "uso: python steganohide.py text.txt bild.bmp"
+        print "use: python steganohide.py text.txt bild.bmp"
         sys.exit()
     else:
         text = sys.argv[1]
@@ -111,8 +111,8 @@ if __name__ == "__main__":
     if not os.path.exists(img):
         raise IOError('El archivo no existe: %s' % img)
 
-    print 'Use text from: \n%s\n' % sys.argv[1]
-    print 'Use image from: \n%s\n' % sys.argv[2]
+    print 'Use texto deste: \n%s\n' % sys.argv[1]
+    print 'Usar imagen desde: \n%s\n' % sys.argv[2]
 
     image = Image.open(img)
     data = open(text).read()
